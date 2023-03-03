@@ -1,0 +1,7 @@
+Redis là một hệ thống cơ sở dữ liệu key-value được sử dụng để lưu trữ dữ liệu trong bộ nhớ và có thể sử dụng để lưu trữ các bản sao trên đĩa cứng hoặc SSD. Redis được sử dụng rộng rãi để lưu trữ và truy xuất dữ liệu theo cách nhanh chóng và hiệu quả, đặc biệt là khi cần xử lý các tác vụ có thời gian phản hồi thấp.
+
+Kafka là một hệ thống xử lý dữ liệu phân tán, sử dụng mô hình publish-subscribe để gửi và nhận các thông điệp. Kafka có thể xử lý hàng triệu thông điệp mỗi giây, đồng thời cung cấp tính năng bảo đảm tin cậy và độ bền cao. Kafka được sử dụng rộng rãi để xử lý dữ liệu theo thời gian thực trong các ứng dụng lớn, chẳng hạn như xử lý dữ liệu trực tuyến, truyền thông và giao dịch.
+
+gRPC là một giao thức truyền thông giữa các ứng dụng, cho phép chúng giao tiếp và truyền dữ liệu qua mạng. gRPC được thiết kế để hỗ trợ việc phát triển ứng dụng phân tán trên các nền tảng khác nhau. gRPC cung cấp một kiểu truyền dữ liệu hiệu quả hơn so với HTTP và REST, đặc biệt là khi truyền dữ liệu lớn hoặc truyền dữ liệu theo thời gian thực.
+
+TCP (Transmission Control Protocol) là một trong những giao thức truyền tải dữ liệu phổ biến nhất trong mạng máy tính. TCP đảm bảo rằng các dữ liệu được gửi và nhận đúng thứ tự, không bị mất, và không bị trùng lặp. TCP cũng đảm bảo rằng các thiết bị trên mạng được điều khiển và điều chỉnh theo cách phù hợp, giúp tăng tốc độ truyền tải dữ liệu và giảm độ trễ. TCP được sử dụng rộng rãi trong các ứng dụng truyền tải dữ liệu như trình duyệt web, email, và các ứng dụng đòi hỏi độ tin cậy cao.

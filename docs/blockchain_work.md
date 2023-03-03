@@ -1,0 +1,1 @@
+How does a blockchain work - Simply Explained: https://www.youtube.com/watch?v=SSo_EIwHSd4
