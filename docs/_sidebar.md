@@ -40,9 +40,6 @@
 
   - CI && CD
 
-- Virtual Box
-  - [Bug](./VM/vm_bug.md)
-
 - Nodejs
   - [Lịch sử và các khái niệm](./nodejs/nodejs.md)
   - Coding
