@@ -31,6 +31,13 @@
   - [Solid](./fe/solid.md)
   - [Svelte](./fe/svelte.md)
 
+- Database
+  - [MongoDB](./db/mongo/index.md)
+
+- Linux
+  - [Chmod](./linux/chmod/index.md)
+  - [Basic](./linux/basic/index.md)
+
 - HTTP Networking
   - [Khái niệm](./network/networking_concept.md)
 
