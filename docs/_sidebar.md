@@ -38,7 +38,12 @@
   - Docker
     - [Docker basic](./docker/build.md) 
 
+  - [Kubernetes](./k8s/index.md)
+
   - CI && CD
+
+- Linux
+  - [Trick](./linux/trick.md)
 
 - Nodejs
   - [Lịch sử và các khái niệm](./nodejs/nodejs.md)
@@ -48,6 +53,11 @@
     - [Basic](./nodejs/basic.md)
     - [Các hàm tương tác với file](./nodejs/node_fs.md)
     - [Export](./nodejs/export.md)
+  - Under the hood
+    - [Core Concept](./nodejs/deep/core_concept.md) 
+    - [Event Emitter](./nodejs/deep/EventEmitter.md) 
+    - [Buffer](./nodejs/deep/Buffer.md) 
+    - [Buffer](./nodejs/deep/file_system.md) 
 
 - Đời sống
   - Think outside the box
