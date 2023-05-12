@@ -57,7 +57,8 @@
     - [Core Concept](./nodejs/deep/core_concept.md) 
     - [Event Emitter](./nodejs/deep/EventEmitter.md) 
     - [Buffer](./nodejs/deep/Buffer.md) 
-    - [Buffer](./nodejs/deep/file_system.md) 
+    - [File System](./nodejs/deep/file_system.md) 
+    - [Streams](./nodejs/deep/streams.md) 
 
 - Đời sống
   - Think outside the box
