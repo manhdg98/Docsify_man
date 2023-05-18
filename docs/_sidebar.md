@@ -13,6 +13,22 @@
   - [Common error coding](./checklist/common_error_coding.md)
   - [Regex](./checklist/regex.md)
 
+- Nodejs
+  - [Lịch sử và các khái niệm](./nodejs/nodejs.md)
+  - Coding
+    - [Build NestJS Project](./nodejs/nest.md)
+    - [Core modules Nodejs](./nodejs/core_module.md)
+    - [Basic](./nodejs/basic.md)
+    - [Các hàm tương tác với file](./nodejs/node_fs.md)
+    - [Export](./nodejs/export.md)
+  - Under the hood
+    - [Core Concept](./nodejs/deep/core_concept.md) 
+    - [Event Emitter](./nodejs/deep/EventEmitter.md) 
+    - [Buffer](./nodejs/deep/Buffer.md) 
+    - [File System](./nodejs/deep/file_system.md) 
+    - [Streams](./nodejs/deep/steams.md) 
+    - [Networking](./nodejs/deep/networking.md)
+
 - Javascript
   - [Deep Compare Array && Object](./javascript/deep_compare.md)
   - [Asynchronous && Synchronous](./javascript/async.md)
@@ -51,21 +67,6 @@
 
 - Linux
   - [Trick](./linux/trick.md)
-
-- Nodejs
-  - [Lịch sử và các khái niệm](./nodejs/nodejs.md)
-  - Coding
-    - [Build NestJS Project](./nodejs/nest.md)
-    - [Core modules Nodejs](./nodejs/core_module.md)
-    - [Basic](./nodejs/basic.md)
-    - [Các hàm tương tác với file](./nodejs/node_fs.md)
-    - [Export](./nodejs/export.md)
-  - Under the hood
-    - [Core Concept](./nodejs/deep/core_concept.md) 
-    - [Event Emitter](./nodejs/deep/EventEmitter.md) 
-    - [Buffer](./nodejs/deep/Buffer.md) 
-    - [File System](./nodejs/deep/file_system.md) 
-    - [Streams](./nodejs/deep/steams.md) 
 
 - Đời sống
   - Think outside the box
