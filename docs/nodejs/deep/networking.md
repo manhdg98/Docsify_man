@@ -41,4 +41,48 @@ Ports (49152-65535)
 
 Ở 1 số hệ thống k thể chạy các port từ 0-1023, nếu bắt buộc phải chạy ứng dụng trên cấc PORT này thì cần chạy với sudo
 
+### Network layer
 
+![High level coding](./img/OSI.jpg)
+
+Mô hình OSI (Open Systems Interconnection) gồm 7 lớp, mỗi lớp đóng vai trò cụ thể trong việc truyền tải dữ liệu qua mạng. Dưới đây là mô tả chi tiết từng lớp trong mô hình OSI:
+
+Physical Layer (Lớp Vật lý):
+
+- Lớp Physical Layer là lớp thấp nhất trong mô hình OSI.
+- Nhiệm vụ của lớp này là xác định các giao diện vật lý và phương tiện truyền dẫn để truyền tải dữ liệu, bao gồm cáp mạng, đồng trục, quang học và sóng radio.
+- Lớp Physical Layer xác định các thông số vật lý như điện áp, tần số, độ dài sóng và định dạng tín hiệu.
+
+Data Link Layer (Lớp Liên kết dữ liệu):
+
+- Lớp Data Link Layer xử lý việc truyền dữ liệu giữa hai nút mạng trực tiếp kề nhau trong mạng.
+- Lớp này chịu trách nhiệm đóng gói dữ liệu thành các khung (frames), thực hiện kiểm soát luồng dữ liệu, kiểm tra lỗi và đảm bảo tính toàn vẹn của dữ liệu.
+- Các giao thức phổ biến trong lớp Data Link Layer bao gồm Ethernet, Wi-Fi, và các giao thức HDLC và PPP.
+
+Network Layer (Lớp Mạng):
+
+- Lớp Network Layer quản lý việc định tuyến và điều khiển lưu lượng gói tin qua mạng.
+- Lớp này sử dụng địa chỉ IP để xác định nguồn và đích, thực hiện việc chuyển tiếp dữ liệu giữa các mạng con và quản lý định tuyến.
+- Giao thức phổ biến trong lớp Network Layer là Internet Protocol (IP).
+
+Transport Layer (Lớp Vận chuyển):
+
+- Lớp Transport Layer cung cấp các dịch vụ vận chuyển dữ liệu tin cậy giữa các quá trình (process) trên các thiết bị đầu cuối.
+- Nhiệm vụ chính của lớp này là đóng gói dữ liệu thành các đoạn (segments) và xác định các kênh truyền tin cậy giữa các thiết bị.
+- Giao thức phổ biến trong lớp Transport Layer bao gồm Transmission Control Protocol (TCP) và User Datagram Protocol (UDP).
+
+Session Layer (Lớp Phiên):
+
+Lớp Session Layer cung cấp một môi trường đáng tin cậy và an toàn cho các ứng dụng giao tiếp trên các hệ thống khác nhau. Nó đảm bảo rằng việc truyền tải dữ liệu giữa các ứng dụng diễn ra một cách hiệu quả và đồng bộ.
+
+Presentation Layer (Lớp Trình bày):
+
+- Lớp Presentation Layer xử lý việc biểu diễn và định dạng dữ liệu để đảm bảo khả năng tương thích giữa các hệ thống khác nhau.
+- Lớp này mã hóa, nén, mã hóa và giải mã dữ liệu để đảm bảo tính toàn vẹn và bảo mật của thông tin trước khi chuyển đến lớp Application Layer.
+- Nó cũng đảm nhận vai trò định dạng dữ liệu để ứng dụng có thể hiểu được và tương tác với nó.
+
+Application Layer (Lớp Ứng dụng):
+
+- Lớp Application Layer là lớp cao nhất trong mô hình OSI và cung cấp các dịch vụ trực tiếp cho người dùng cuối.
+- Lớp này cho phép các ứng dụng truy cập vào mạng và sử dụng các dịch vụ mạng như truyền tập tập tin (File Transfer Protocol - FTP), truyền tải thư điện tử (Simple Mail Transfer Protocol - SMTP), duyệt web (Hypertext Transfer Protocol - HTTP), và nhiều dịch vụ khác.
+- Lớp Application Layer tương tác trực tiếp với người dùng cuối và cung cấp giao diện để tương tác với các ứng dụng và dịch vụ mạng.
