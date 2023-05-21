@@ -28,6 +28,7 @@
     - [File System](./nodejs/deep/file_system.md) 
     - [Streams](./nodejs/deep/steams.md) 
     - [Networking](./nodejs/deep/networking.md)
+    - [Event Loop](./nodejs/deep/eventloop.md)
     - [Q & A](./nodejs/QA.md)
 
 - Javascript

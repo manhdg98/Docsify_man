@@ -134,3 +134,11 @@ Create Read Stream is a better option for reading large files, while the read fi
 
 Event loop chạy xong đống stack trong call stack thì setImmediate đứng chờ luôn, setTimeout để sau đi
 
+15. MVC
+
+Model: Model đại diện cho dữ liệu và quy tắc kinh doanh của ứng dụng. Nó là nơi lưu trữ, truy xuất và xử lý dữ liệu. Trong Node.js, Model có thể là các đối tượng JavaScript, các tệp tin, cơ sở dữ liệu hoặc các dịch vụ ngoại vi. Model không phụ thuộc vào bất kỳ thành phần nào khác trong MVC và chỉ tập trung vào quản lý dữ liệu và thao tác liên quan.
+
+View: View là giao diện người dùng, nơi hiển thị dữ liệu từ Model và tương tác với người dùng. Trong Node.js, View thường được tạo bằng các template engine như EJS, Pug (trước đây là Jade), hoặc thậm chí có thể là các trang HTML tĩnh. View không chứa logic kinh doanh và chỉ hiển thị dữ liệu theo yêu cầu từ Controller và Model.
+
+Controller: Controller là điểm trung tâm của MVC, nó là cầu nối giữa Model và View. Controller nhận lệnh từ người dùng thông qua View, xử lý các yêu cầu, truy xuất dữ liệu từ Model và sau đó chuyển dữ liệu đó đến View để hiển thị. Trong Node.js, Controller thường được triển khai bằng các hàm xử lý yêu cầu HTTP hoặc các router trong framework như Express.js.
+
