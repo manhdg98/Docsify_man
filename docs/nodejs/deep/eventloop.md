@@ -1,4 +1,6 @@
 ### Event Loop JS
+![Class diagram](./img/node_pre.PNG)
+
 ![Class diagram](./img/evloop.PNG)
 
 ![Class diagram](./img/evloopjs.PNG)
@@ -22,5 +24,10 @@
 Nodejs Architecture 
 
 ![Class digaram](./img/nodejsEngine.PNG)
+![Class digaram](./img/node_api_async.PNG)
+![Class digaram](./img/node_evloop.PNG)
+![Class digaram](./img/node_el_explane.PNG) 
+![Class digaram](./img/node_thutu.PNG) 
+![Class digaram](./img/best_pratices.PNG) 
 
 
