@@ -1,18 +1,3 @@
-- Khái niệm cơ bản
-
-  - [ABI](abi.md)
-  - [Thuật ngữ](note.md)
-
-- Blockchain
-  - [How does a blockchain work](blockchain_work.md)
-
-- Cheatsheet
-  - [Cheatsheet](cheatsheet.md)
-
-- Checklist
-  - [Common error coding](./checklist/common_error_coding.md)
-  - [Regex](./checklist/regex.md)
-
 - Nodejs
   - [Lịch sử và các khái niệm](./nodejs/nodejs.md)
   - Coding
@@ -81,6 +66,21 @@
 
 - Linux
   - [Trick](./linux/trick.md)
+
+- Khái niệm cơ bản
+
+  - [ABI](abi.md)
+  - [Thuật ngữ](note.md)
+
+- Blockchain
+  - [How does a blockchain work](blockchain_work.md)
+
+- Cheatsheet
+  - [Cheatsheet](cheatsheet.md)
+
+- Checklist
+  - [Common error coding](./checklist/common_error_coding.md)
+  - [Regex](./checklist/regex.md)
 
 - Đời sống
   - Think outside the box
