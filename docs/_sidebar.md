@@ -20,9 +20,20 @@
     - [Factory Pattern](./design_pattern/create/factory.md)
   - Structural Design Patterns
     - [Facade Pattern](./design_pattern/structure/Facade.md)
+    - [Proxy Pattern](./design_pattern/structure/proxy.md)
   - Behavioral Design Patterns  
-    - [Null Object Pattern](./design_pattern/behavioral/nullobject.md)
+    - [Null Object Pattern](./design_pattern/behavioral/null_object.md)
     - [Command Pattern](./design_pattern/behavioral/command.md)
+    - [Strategy Pattern](./design_pattern/behavioral/Strategy.md)
+    - [Observer Pattern](./design_pattern/behavioral/observer.md)
+    - [Iterator Pattern](./design_pattern/behavioral/Iterator%20.md)
+
+- Solid
+  - [Single Responsibility Principle](./solid/s.md) 
+  - [Open/Closed Principle](./solid/o.md) 
+  - [Liskov Substitution Principle](./solid/l.md) 
+  - [Interface Segregation Principle](./solid/i.md) 
+  - [Dependency Inversion](./solid/d.md) 
 
 - Javascript
   - [Deep Compare Array && Object](./javascript/deep_compare.md)
