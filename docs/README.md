@@ -1,6 +1,7 @@
-<h2>Hey, My name is Ngô Tiến Mạnh (Man Steven) <img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="50"></h2> <img align='right' src="https://media.giphy.com/media/M9gbBd9nbDrOTu1Mqx/giphy.gif" width="230"> 
-<br/>
+## Profile of the person who will change the world in the future
 
+<h3>Hey, My name is Ngô Tiến Mạnh (Man Steven) <img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="50"></h3> <img align='right' src="https://media.giphy.com/media/M9gbBd9nbDrOTu1Mqx/giphy.gif" width="230"> 
+<br/>
 
 <p><em>Owner of Web3 Developers Community Group in Facebook <a href="https://www.facebook.com/groups/1581706252220313">Web3</a><img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30"></br>Computer Science and Engineering Student at <a href="">Hanoi university of industry</a><img src="https://media.giphy.com/media/fYSnHlufseco8Fh93Z/giphy.gif" width="30">
 </em></p>
@@ -8,7 +9,6 @@
 - 🔭 I’m currently working on getting my shit together.
 - 🔮 What do I do? - You give me faith that I can do for you anything you want.
 - 🌱 Learn everything to not be afraid 
-      Ngô Tiến Mạnh was incapable of thinking small . . . 
 - 💕 Interest: Universe, stone age, ice age, history, great scientists, classics, web3 and blockchain, reincarnation, gym
 - 👯 I’m looking to collaborate on Web3 and Blockchain
 - 🤔 I’m looking for help manage Web3 group. 
