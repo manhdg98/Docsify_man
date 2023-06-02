@@ -66,6 +66,7 @@
 - Devops
   - Docker
     - [Docker basic](./docker/build.md) 
+    - [Trick](./docker/trick.md)
 
   - [Kubernetes](./k8s/index.md)
 
