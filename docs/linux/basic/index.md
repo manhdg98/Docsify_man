@@ -9,3 +9,15 @@ kill $(lsof -t -i :PORT_NUMBER)
 ```shell
 ip addr show
 ```
+
+# Check OS
+```shell
+uname
+lscpu
+free
+```
+check cpu core
+```shell
+nproc --all
+```
+
