@@ -177,6 +177,35 @@ docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d
 ### Dockerignore   
 Giống như .gitignore, nó không copy những folder hay file không cần thiết vào Virtual Machine, cụ thể là Docker Container
 
+### Docker overlay (/var/lib/docker)
+
+Docker Overlay là một driver lưu trữ (storage driver) được sử dụng trong Docker để quản lý các layer và lưu trữ các container và image. Nó là một phần của hệ thống quản lý lưu trữ Docker.
+
+Khi bạn tạo một container hoặc image trong Docker, Overlay driver sẽ tạo ra các layer (lớp) riêng biệt để lưu trữ các thay đổi từng bước trong quá trình xây dựng container hoặc image đó. Mỗi layer đại diện cho một phần cụ thể của file hệ thống. Những layer này có thể chứa các file, thư mục, hoặc thay đổi được thực hiện trong quá trình thực thi container.
+
+Overlay driver sử dụng kỹ thuật OverlayFS, một tính năng có sẵn trong hệ điều hành Linux kernel. OverlayFS cho phép nhiều lớp (layers) file hệ thống được gắn kết chồng lên nhau để tạo thành một file hệ thống duy nhất. Khi một tệp tin được truy cập, OverlayFS sẽ tìm kiếm lần lượt qua các lớp đến khi tìm thấy tệp tin cần thiết.
+
+Các container và image trong Docker sẽ sử dụng các layer Overlay để lưu trữ các thay đổi và tạo ra một hệ thống file ảo. Các thay đổi trong container được ghi lại trong các layer riêng biệt, và chỉ các thay đổi mới nhất được hiển thị khi truy cập vào container đó. Điều này giúp giảm dung lượng lưu trữ và tăng tính hiệu quả trong việc tạo, chia sẻ, và quản lý các container và image.
+
+Tổng quan, Overlay driver trong Docker là một cơ chế lưu trữ được sử dụng để quản lý các layer và lưu trữ các container và image. Nó sử dụng kỹ thuật OverlayFS để tạo ra các layer và gắn kết chồng lên nhau để tạo thành một hệ thống file ảo cho các container và image trong Docker.
+
+
+Để xóa các layer cũ của Docker Overlay, bạn có thể sử dụng lệnh `docker system prune`. Lệnh này sẽ xóa các dữ liệu không sử dụng, bao gồm các image, container, volume và network không còn sử dụng.
+
+Vui lòng lưu ý rằng việc xóa các layer cũ có thể ảnh hưởng đến các container và image đang sử dụng chúng. Hãy đảm bảo rằng bạn đã sao lưu các dữ liệu quan trọng trước khi thực hiện thao tác này.
+
+Để xóa các layer cũ, hãy thực hiện các bước sau:
+
+1. Mở terminal hoặc command prompt.
+2. Chạy lệnh sau để xóa các layer cũ của Docker Overlay:
+
+   ```shell
+   docker system prune
+   ```
+
+3. Docker sẽ yêu cầu xác nhận việc xóa các dữ liệu không sử dụng. Nhấn `y` và nhấn Enter để tiếp tục.
+
+Lệnh trên sẽ xóa các layer cũ của Docker Overlay, giải phóng không gian lưu trữ và loại bỏ các dữ liệu không còn sử dụng. Sau khi thực hiện xóa, bạn sẽ có được một hệ thống Docker sạch hơn và sử dụng không gian lưu trữ hiệu quả hơn.
 
 
 
