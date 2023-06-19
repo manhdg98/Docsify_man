@@ -10,6 +10,7 @@
     - [Streams](./nodejs/deep/steams.md) 
     - [Networking](./nodejs/deep/networking.md)
     - [Event Loop](./nodejs/deep/eventloop.md)
+    - [MicroService](./nodejs/micro-service.md)
     - [Q & A](./nodejs/QA.md)
 
 - Design Pattern
@@ -59,6 +60,7 @@
 - Linux
   - [Chmod](./linux/chmod/index.md)
   - [Basic](./linux/basic/index.md)
+  - [Trick](./linux/trick.md)
 
 - HTTP Networking
   - [Khái niệm](./network/networking_concept.md)
@@ -71,9 +73,6 @@
   - [Kubernetes](./k8s/index.md)
   
   - CI && CD
-
-- Linux
-  - [Trick](./linux/trick.md)
 
 - Khái niệm cơ bản
 
@@ -92,5 +91,6 @@
 
 - Đời sống
   - Think outside the box
-  - Đôi mắt mỉm cười 
+  - Đôi mắt mỉm cười
+
 
