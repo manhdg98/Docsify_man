@@ -102,7 +102,7 @@ terraform apply -var="client_id=a2016492-068c-4f37-a32b-6e6196b65488" -var="clie
 Shared Database seever
 Elastic scaling for the cluster
 
-Moving into even more advanced territory, we can now thinkabout elastic scaling, which is a technique where weautomatically and dynamically scale our cluster to meetvarying levels of demand. At periods of low demand,Kubernetes can automatically deallocate resources thataren’t needed. At periods of high demand, it can allocatenew resources to meet the increased load. This makes forsubstantial cost savings because, at any given moment, weonly pay for the resources that we need to handle the loadon our application at that time.
+Moving into even more advanced territory, we can now thinkabout elastic scaling, which is a technique where weautomatically and dynamically scale our cluster to meetvarying levels of demand. At periods of low demand,Kubernetes can automatically deallocate resources thataren’t needed. At periods of high demand, it can allocatenew resources to meet the increased load. This makes forsubstantial cost savings because, at any given moment, weonly pay for the resources that we need to handle the loadon our application at that time. 
 
 Blue_Green ENV
 ![Class diagram](./img/env.PNG)
