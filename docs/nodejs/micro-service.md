@@ -107,6 +107,9 @@ Moving into even more advanced territory, we can now thinkabout elastic scaling,
 Blue_Green ENV
 ![Class diagram](./img/env.PNG)
 
+### System design
+1. Overview
+
 ![Class diagram](./img/scale_system.PNG)
 
 • Keep web tier stateless  
@@ -116,6 +119,17 @@ Blue_Green ENV
 • Scale your data tier by sharding  
 • Split tiers into individual services  
 • Monitor your system and use automation tools
+
+2. Rate Limit
+
+CAP theorem states it is impossible for a distributed system to simultaneously provide morethan two of these three guarantees: consistency, availability, and partition tolerance. Let usestablish a few definitions
+
+Consistency: consistency means all clients see the same data at the same time no matterwhich node they connect to
+
+Availability: availability means any client which requests data gets a response even if someof the nodes are down
+
+
+
 
 
 
