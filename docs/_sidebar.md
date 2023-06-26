@@ -45,6 +45,7 @@
   - [OOP](./javascript/oop.md)
   - [Note-JS](./javascript/note-js.md)
   - [Những bài toán khó](./javascript/resolve.md)
+  - [Typescript](./typescript/index.md)
 
 - FrontEnd
   - [Virtual Dom && Real Dom](./fe/virtualdom.md)
