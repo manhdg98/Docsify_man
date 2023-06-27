@@ -253,5 +253,285 @@ let gloves: [string, number, number?] = ["Gloves", 75,10];
 #### Defining Tuples with Rest Elements
 
 ```js
-let hat: [string, number, number?, ...number[]] =["Hat", 100, 10, 1.20, 3, 0.95];
+let hat: [string, number, number?, ...number[]] = ["Hat", 100, 10, 1.20, 3, 0.95];
 ```
+
+#### Limitation of Enum
+
+Understanding the Value-Checking Limitation
+
+```js
+function calculateTax(amount: number): number {
+    return amount * 1.2;
+}
+
+function writePrice(product: string, price: number): void {
+    console.log(`Price for ${product}:
+    $${price.toFixed(2)}`);
+}
+
+enum OtherEnum {
+    First = 10,
+    Two = 20
+}
+
+enum Product {
+    Hat = OtherEnum.First + 1,
+    Gloves = 20,
+    Umbrella = Hat + Gloves
+}
+
+let productValue: Product = 0;
+let productName: string = Product[productValue];
+console.log(`Value: ${productValue}, Name:
+    ${productName}`);
+
+enum City {
+    London = "London",
+    Paris = "Paris",
+    NY = "New York"
+}
+```
+
+Output:11 20 31, 0 not value of Product
+```js
+index.ts(21,5): error TS2322: Type '0' is not assignable to type 'Product'.
+```
+
+Understanding the Type Guard Limitation: 
+
+không thể dùng typeof để phân enum và number được
+
+```js
+function calculateTax(amount: number): number {
+    return amount * 1.2;
+}
+
+function writePrice(product: string, price: number): void {
+    console.log(`Price for ${product}: $${price.toFixed(2)}`);
+}
+
+enum OtherEnum {
+    First = 10,
+    Two = 20
+}
+
+enum Product {
+    Hat = OtherEnum.First + 1,
+    Gloves = 20,
+    Umbrella = Hat + Gloves
+}
+
+let productValue: Product = Product.Hat;
+if (typeof productValue === "number") {
+    console.log("Value is a number");
+}
+
+let unionValue: number | Product = Product.Hat;
+if (typeof unionValue === "number") {
+    console.log("Value is a number");
+}
+
+// Value is a number
+// Value is a number
+```
+
+### Working with Objects
+
+![Async && Sync](./img/object.PNG) 
+
+#### Working with Objects
+
+JavaScript objects are collections of properties that can be created using theliteral syntax, constructor functions, or classes.
+
+To provide type features forobjects, TypeScript focuses on an object’s “shape,” which is the combination ofits property names and types
+
+#### Using Type Aliases for Shape Types
+
+```js
+enum Feature {
+    Waterproof,
+    Insulated
+}
+
+type Product = {
+    name: string,
+    price?: number,
+    hasFeature?(feature: Feature): boolean
+};
+
+let hat = {
+    name: "Hat",
+    price: 100
+};
+
+let gloves = {
+    name: "Gloves",
+    price: 75
+};
+
+let umbrella = {
+    name: "Umbrella",
+    price: 30,
+    hasFeature: (feature) => feature === Feature.Waterproof
+};
+
+let products: Product[] = [hat, gloves, umbrella];
+
+products.forEach(prod =>
+    console.log(`${prod.name}: ${prod.price} ` +
+    `${prod.hasFeature ? prod.hasFeature(Feature.Waterproof) : "false"}`)
+);
+
+```
+
+#### Using Shape Type Unions
+
+Arrays or function parameters can acceptmultiple types.
+
+```js
+type Product = {
+    id: number,
+    name: string,
+    price?: number
+};
+
+type Person = {
+    id: string,
+    name: string,
+    city: string
+};
+
+let hat = { id: 1, name: "Hat", price: 100 };
+let gloves = { id: 2, name: "Gloves", price: 75 };
+let umbrella = { id: 3, name: "Umbrella", price: 30 };
+let bob = { id: "bsmith", name: "Bob", city: "London" };
+
+let dataItems: (Product | Person)[] = [hat, gloves, umbrella, bob];
+
+dataItems.forEach(item =>
+    console.log(`ID: ${item.id}, Name: ${item.name}`)
+);
+
+```
+
+#### Understanding Union Property Types
+
+```js
+type UnionType = {
+  id: number | string,
+  name: string
+};
+let dataItems: UnionType[] = [hat, gloves, umbrella, bob];
+```
+
+#### Person: Bob: LondonUsing Type Intersections
+
+```js
+type Person = {
+    id: string,
+    name: string,
+    city: string
+};
+
+type Employee = {
+    company: string,
+    dept: string
+};
+
+let bob = {
+    id: "bsmith",
+    name: "Bob",
+    city: "London",
+    company: "Acme Co",
+    dept: "Sales"
+};
+
+let dataItems: (Person & Employee)[] = [bob];
+
+dataItems.forEach(item => {
+    console.log(`Person: ${item.id}, ${item.name}, ${item.city}`);
+    console.log(`Employee: ${item.id}, ${item.company}, ${item.dept}`);
+});
+
+```
+
+#### Merging Properties with Different Types
+If there are properties with the same name but different types, the compiler keeps
+the property name but intersects the type
+
+```js
+type Person = {
+  id: string,
+  name: string,
+  city: string,
+  contact: number
+};
+
+type Employee = {
+  id: string,
+  company: string,
+  dept: string,
+  contact: string
+};
+
+type EmployedPerson = Person & Employee;
+
+let typeTest = ({} as EmployedPerson).contact
+
+// declare let typeTest: number & string;
+// src/index.ts(21,40): error TS2322: Type 'string' isnot assignable to type 'never'.
+```
+
+There is noway to work around this problem for primitive types, and the only solution is toadjust the types used in the intersection so that shape types are used instead ofprimitives,
+
+```js
+type Person = {
+    id: string,
+    name: string,
+    city: string,
+    contact: { phone: number }
+};
+
+type Employee = {
+    id: string,
+    company: string,
+    dept: string,
+    contact: { name: string }
+};
+
+type EmployedPerson = Person & Employee;
+
+let typeTest = ({} as EmployedPerson);
+
+let person1: EmployedPerson = {
+    id: "bsmith",
+    name: "Bob Smith",
+    city: "London",
+    company: "Acme Co",
+    dept: "Sales",
+    contact: {
+        name: "Alice",
+        phone: 6512346543
+    }
+};
+
+let person2: EmployedPerson = {
+    id: "dpeters",
+    name: "Dora Peters",
+    city: "New York",
+    company: "Acme Co",
+    dept: "Development",
+    contact: {
+        name: "Alice",
+        phone: 6512346543
+    }
+};
+
+```
+
+#### Working with Classes and Interfaces
+
+![Async && Sync](./img/class.PNG) 
+
+#### Using Constructor Functions
