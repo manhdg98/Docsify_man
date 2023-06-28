@@ -1207,3 +1207,81 @@ getValue(e, "name");
 getValue(e, "role");
 
 ```
+
+#### Explicitly Providing Generic Type Parameters for Index Types
+
+```ts
+getValue<Product, "name">(p, "name");
+
+function getValue<T, K extends keyof T>(item: T, keyname: K): T[K] {
+  return item[keyname];
+}
+```
+
+#### Using Type Mapping
+
+```ts
+import { City, Person, Product, Employee } from "./dataTypes";
+
+type MappedProduct = { [P in keyof Product]: Product[P] };
+
+let p: MappedProduct = { name: "Kayak", price: 275 };
+console.log(`Mapped type: ${p.name}, ${p.price}`);
+
+```
+
+#### Using a Generic Type Parameter with a Mapped Type
+
+```ts
+import { City, Person, Product, Employee } from "./dataTypes";
+
+type Mapped<T> = { [P in keyof T]: T[P] };
+
+let p: Mapped<Product> = { name: "Kayak", price: 275 };
+console.log(`Mapped type: ${p.name}, ${p.price}`);
+
+let c: Mapped<City> = { name: "London", population: 8136000 };
+console.log(`Mapped type: ${c.name}, ${c.population}`);
+
+```
+
+#### Using the Basic Built-in Mappings
+
+```ts
+type MakeOptional<T> = { [P in keyof T]?: T[P] };
+type MakeRequired<T> = { [P in keyof T]-?: T[P] };
+type MakeReadOnly<T> = { readonly [P in keyof T]: T[P] };
+type MakeReadWrite<T> = { -readonly [P in keyof T]: T[P] };
+
+type optionalType = Partial<Product>;
+type requiredType = Required<optionalType>;
+type readOnlyType = Readonly<requiredType>;
+type readWriteType = MakeReadWrite<readOnlyType>;
+```
+
+#### Mapping Specific Properties
+
+```ts
+import { City, Person, Product, Employee } from "./dataTypes";
+
+type SelectProperties<T, K extends keyof T> = { [P in K]: T[P] };
+
+let p1: SelectProperties<Product, "name"> = { name: "Kayak" };
+// Pick 1 key trong Product
+let p2: Pick<Product, "name" | "price"> = { name: "Kayak", price: 123 };
+// Loại trừ
+let p3: Omit<Product, "price"> = { name: "Kayak" };
+
+console.log(`Custom mapped type: ${p1.name}`);
+console.log(`Built-in mapped type (Pick): ${p2.name} ${p2.price}`);
+console.log(`Built-in mapped type (Omit): ${p3.name}`);
+
+Custom mapped type: Kayak
+Built-in mapped type (Pick): Kayak
+Built-in mapped type (Omit): Kayak
+```
+
+#### Creating Types with a Type Mapping
+```ts
+let p2: Record<"name"| "city", string> = { name:"Alice", city: "Paris"};
+```
