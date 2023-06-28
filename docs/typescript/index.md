@@ -1,5 +1,6 @@
+Ref: Essential TypeScript 4
 ### What is Typescript
-
+ 
 TypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale
 
 Created by Microsoft in the year 2012
@@ -21,19 +22,19 @@ tsc -w
 ![Async && Sync](./img/type.PNG) 
 
 #### Using Type Union:
-```js
+```ts
 let taxNumber: string | number  = calculateTax(100,false);
 ```
 
 #### Using Type Assertions
-```js
+```ts
 let taxNumber = calculateTax(100, false) as number;
 
 let taxNumber = <number> calculateTax(100, false);
 ```
 
 #### Using a Type Guard
-```js
+```ts
 typeof taxValue === "number"
 ```
 
@@ -41,7 +42,7 @@ typeof taxValue === "number"
 
 Something has gone wrong if execution reaches the default clause of theswitch statement, and TypeScript provides the never type to ensure you can’taccidentally use a value once type guards have been used to exhaustively narrowa value to all of its possible types
 
-```js
+```ts
 let taxValue = calculateTax(100, false);
 switch (typeof taxValue) {
   case "number":
@@ -60,7 +61,7 @@ switch (typeof taxValue) {
 
 #### Using the unknown Type
 
-```js
+```ts
 let newResult: unknown = calculateTax(200, false);
 let myNumber: number = newResult;
 console.log(`Number value: ${myNumber.toFixed(2)}`);
@@ -73,7 +74,7 @@ src/index.ts(18,5): error TS2322: Type 'unknown' isnot assignable to type 'numbe
 ```
 
 Instead
-```js
+```ts
 let myNumber: number = newResult as number;
 ```
 Unlike the earlier example, the unknown value is really a number, so thecode doesn’t generate a runtime error and produces the following output whenexecuted
@@ -85,7 +86,7 @@ Under normal circumstances, the compiler will report an error if a value ofone t
 ### Removing null from a Union with an Assertion
 
 Using !
-```js
+```ts
 let taxValue: string | number = calculateTax(100,false)!;
 ```
 
@@ -97,7 +98,7 @@ A non-null value is asserted by applying the ! character after the value, as ill
 
 #### Using Optional Parameters
 
-```js
+```ts
 function calculateTax(amount, discount?) {
     return (amount * 1.2) - (discount || 0);
 }
@@ -109,7 +110,7 @@ console.log(`1 arg: ${taxValue}`);
 
 #### Using Default Parameters
 
-```js
+```ts
 function calculateTax(amount, discount?) {
     return (amount * 1.2) - (discount || 0);
 }
@@ -119,7 +120,7 @@ function calculateTax(amount, discount?) {
 
 A function can have one rest parameter only, and it must bethe last parameter
 
-```js
+```ts
 function calculateTax(amount: number, discount: number = 0, ...extraFees: number[]): number {
     return (amount * 1.2) - discount + extraFees.reduce((total, val) => total + val, 0);
 }
@@ -127,7 +128,7 @@ function calculateTax(amount: number, discount: number = 0, ...extraFees: number
 
 #### Defining Void Functions
 Functions that do not produce results are declared using the void type
-```js
+```ts
 function writeValue(label: string, value: number): void {
     console.log(`${label}: ${value}`);
 }
@@ -136,7 +137,7 @@ writeValue("Tax value", calculateTax(100, 0));
 
 #### Overloading Function Types
 
-```js
+```ts
 function calculateTax(amount: number): number;
 function calculateTax(amount: null): null;
 function calculateTax(amount: number | null): number | null {
@@ -150,7 +151,7 @@ function calculateTax(amount: number | null): number | null {
 
 ### Understanding Assert Functions
 
-```js
+```ts
 function check(expression: boolean) : asserts expression {
     if (!expression) {
         throw new Error("Expression is false");
@@ -171,17 +172,17 @@ console.log(`Tax value: ${taxAmount}`)
 #### Working with Arrays
 
 Syntax
-```js
+```ts
 let prices: number[] = [100, 75, 42];
 let prices: Array<number> = [100, 75, 42];
 ```
 
-```js
+```ts
 let prices: number[] = [100, 75, 42];
 let names: string[] = ["Hat", "Gloves", "Umbrella"];
 ```
 
-```js
+```ts
 function calculateTax(amount: number): number {
     return amount * 1.2;
 }
@@ -207,7 +208,7 @@ Trong TypeScript, khi bạn khai báo một mảng với kiểu dữ liệu cụ
 
 Basic tuples are fixed-length arrays, where each element in the array can have adifferent type. Tuples are a data structure that is provided by the TypeScriptcompiler implemented using regular JavaScript arrays in the compiled code
 
-```js
+```ts
 let hat: [string, number] = ["Hat", 100];
 ```
 
@@ -215,7 +216,7 @@ let hat: [string, number] = ["Hat", 100];
 
 Tuples have a distinct type that can be used just like any type, which means youcan create arrays of tuples, use tuples in type unions, and use type guards tonarrow values to specific tuple types
 
-```js
+```ts
 function calculateTax(amount: number): number {
   return amount * 1.2;
 }
@@ -245,14 +246,14 @@ tupleUnion.forEach((elem: [string, number] | boolean) => {
 
 #### Using Tuples with Optional Elements
 
-```js
+```ts
 let hat: [string, number, number?] = ["Hat", 100];
 let gloves: [string, number, number?] = ["Gloves", 75,10];
 ```
 
 #### Defining Tuples with Rest Elements
 
-```js
+```ts
 let hat: [string, number, number?, ...number[]] = ["Hat", 100, 10, 1.20, 3, 0.95];
 ```
 
@@ -260,7 +261,7 @@ let hat: [string, number, number?, ...number[]] = ["Hat", 100, 10, 1.20, 3, 0.95
 
 Understanding the Value-Checking Limitation
 
-```js
+```ts
 function calculateTax(amount: number): number {
     return amount * 1.2;
 }
@@ -294,7 +295,7 @@ enum City {
 ```
 
 Output:11 20 31, 0 not value of Product
-```js
+```ts
 index.ts(21,5): error TS2322: Type '0' is not assignable to type 'Product'.
 ```
 
@@ -302,7 +303,7 @@ Understanding the Type Guard Limitation:
 
 không thể dùng typeof để phân enum và number được
 
-```js
+```ts
 function calculateTax(amount: number): number {
     return amount * 1.2;
 }
@@ -348,7 +349,7 @@ To provide type features forobjects, TypeScript focuses on an object’s “shap
 
 #### Using Type Aliases for Shape Types
 
-```js
+```ts
 enum Feature {
     Waterproof,
     Insulated
@@ -389,7 +390,7 @@ products.forEach(prod =>
 
 Arrays or function parameters can acceptmultiple types.
 
-```js
+```ts
 type Product = {
     id: number,
     name: string,
@@ -417,7 +418,7 @@ dataItems.forEach(item =>
 
 #### Understanding Union Property Types
 
-```js
+```ts
 type UnionType = {
   id: number | string,
   name: string
@@ -427,7 +428,7 @@ let dataItems: UnionType[] = [hat, gloves, umbrella, bob];
 
 #### Person: Bob: LondonUsing Type Intersections
 
-```js
+```ts
 type Person = {
     id: string,
     name: string,
@@ -460,7 +461,7 @@ dataItems.forEach(item => {
 If there are properties with the same name but different types, the compiler keeps
 the property name but intersects the type
 
-```js
+```ts
 type Person = {
   id: string,
   name: string,
@@ -485,7 +486,7 @@ let typeTest = ({} as EmployedPerson).contact
 
 There is noway to work around this problem for primitive types, and the only solution is toadjust the types used in the intersection so that shape types are used instead ofprimitives,
 
-```js
+```ts
 type Person = {
     id: string,
     name: string,
@@ -535,3 +536,674 @@ let person2: EmployedPerson = {
 ![Async && Sync](./img/class.PNG) 
 
 #### Using Constructor Functions
+
+```ts
+type Person = {
+    id: string,
+    name: string,
+    city: string
+};
+
+type Employee = {
+    id: string,
+    name: string,
+    dept: string,
+    city: string,
+    writeDept: () => void
+};
+
+let Employee = function(id: string, name: string, dept: string, city: string) {
+    this.id = id;
+    this.name = name;
+    this.dept = dept;
+    this.city = city;
+};
+
+Employee.prototype.writeDept = function() {
+    console.log(`${this.name} works in ${this.dept}`);
+};
+
+let salesEmployee = new Employee("fvega", "Fidel Vega", "Sales", "Paris");
+
+let data: (Person | Employee)[] = [
+    { id: "bsmith", name: "Bob Smith", city: "London" },
+    { id: "ajones", name: "Alice Jones", city: "Paris" },
+    { id: "dpeters", name: "Dora Peters", city: "New York" },
+    salesEmployee
+];
+
+data.forEach(item => {
+    if ("dept" in item) {
+        item.writeDept();
+    } else {
+        console.log(`${item.id} ${item.name}, ${item.city}`);
+    }
+});
+
+```
+
+#### Using Classes
+
+```ts
+// Nếu sử dụng contructor fuction thì phải thêm type vào, còn class thì k cần
+type Person = {
+    id: string,
+    name: string,
+    city: string
+};
+
+class Employee {
+    id: string;
+    name: string;
+    dept: string;
+    city: string;
+
+    constructor(id: string, name: string, dept: string, city: string) {
+        this.id = id;
+        this.name = name;
+        this.dept = dept;
+        this.city = city;
+    }
+
+    writeDept() {
+        console.log(`${this.name} works in ${this.dept}`);
+    }
+}
+
+let salesEmployee = new Employee("fvega", "FidelVega", "Sales", "Paris");
+
+let data: (Person | Employee)[] = [
+    { id: "bsmith", name: "Bob Smith", city: "London" },
+    { id: "ajones", name: "Alice Jones", city: "Paris" },
+    { id: "dpeters", name: "Dora Peters", city: "New York" },
+    salesEmployee
+];
+
+data.forEach(item => {
+    if (item instanceof Employee) {
+        item.writeDept();
+    } else {
+        console.log(`${item.id} ${item.name}, ${item.city}`);
+    }
+});
+
+```
+
+#### Using the Access Control Keywords
+
+private, public, protected
+```ts
+type Person = {
+    id: string,
+    name: string,
+    city: string
+};
+
+class Employee {
+    public id: string;
+    public name: string;
+    private dept: string;
+    public city: string;
+
+    constructor(id: string, name: string, dept: string, city: string) {
+        this.id = id;
+        this.name = name;
+        this.dept = dept;
+        this.city = city;
+    }
+
+    writeDept() {
+        console.log(`${this.name} works in ${this.dept}`);
+    }
+}
+
+let salesEmployee = new Employee("fvega", "FidelVega", "Sales", "Paris");
+console.log(`Dept value: ${salesEmployee.dept}`);
+```
+
+#### Defining Read-Only Properties
+
+The readonly keyword can be used to create instance properties whose valueis assigned by the constructor but cannot otherwise be changed
+
+#### Using Class Inheritance
+```ts
+class Person {
+    constructor(public id: string, public name: string, public city: string) { }
+}
+
+class Employee extends Person {
+    constructor(public readonly id: string, public name: string, private dept: string, public city: string) {
+        super(id, name, city);
+    }
+
+    writeDept() {
+        console.log(`${this.name} works in ${this.dept}`);
+    }
+}
+
+let data = [
+    new Person("bsmith", "Bob Smith", "London"),
+    new Employee("fvega", "Fidel Vega", "Sales", "Paris")
+];
+
+data.forEach(item => {
+    console.log(`Person: ${item.name}, ${item.city}`);
+    if (item instanceof Employee) {
+        item.writeDept();
+    }
+});
+
+```
+
+#### Using an Abstract Class
+Các lớp trừu tượng không thể được khởi tạo trực tiếp và được sử dụng để mô tả chức năng chung phải được thực hiện bởi các lớp con, forcing subclasses toadhere to a specific shape but allowing class-specific implementations ofspecific method
+
+When a class extends an abstract class, it must implement all the abstractmethods
+
+```ts
+abstract class Person {
+    constructor(public id: string, public name: string, public city: string) {}
+
+    getDetails(): string {
+        return `${this.name}, ${this.getSpecificDetails()}`;
+    }
+
+    abstract getSpecificDetails(): string;
+}
+
+class Employee extends Person {
+    constructor(public readonly id: string, public name: string, private dept: string, public city: string) {
+        super(id, name, city);
+    }
+
+    getSpecificDetails() {
+        return `works in ${this.dept}`;
+    }
+}
+
+class Customer extends Person {
+    constructor(public readonly id: string, public name: string, public city: string, public creditLimit: number) {
+        super(id, name, city);
+    }
+
+    getSpecificDetails() {
+        return `has ${this.creditLimit} limit`;
+    }
+}
+
+class Supplier extends Person {
+    constructor(public readonly id: string, public name: string, public city: string, public companyName: string) {
+        super(id, name, city);
+    }
+
+    getSpecificDetails() {
+        return `works for ${this.companyName}`;
+    }
+}
+
+let data: Person[] = [
+    new Employee("fvega", "FidelVega", "Sales", "Paris"),
+    new Customer("ajones", "Alice Jones", "London", 500)
+];
+
+data.push(new Supplier("dpeters", "Dora Peters", "New York", "Acme"));
+
+data.forEach(item => console.log(item.getDetails()));
+
+```
+
+#### Using Interfaces
+
+khác với abstract là abstract có thể explain function và để thằng con kế thừa, interface thì không, nó chỉ mô tả để những thằng implements nó tuân theo thôi
+
+```ts
+
+interface Person {
+    name: string;
+    getDetails(): string;
+}
+
+class Employee implements Person {
+    constructor(public readonly id: string, public name: string, private dept: string, public city: string) {
+        // no statements required
+    }
+
+    getDetails() {
+        return `${this.name} works in ${this.dept}`;
+    }
+}
+
+class Customer implements Person {
+    constructor(public readonly id: string, public name: string, public city: string, public creditLimit: number) {
+        // no statements required
+    }
+
+    getDetails() {
+        return `${this.name} has ${this.creditLimit} limit`;
+    }
+}
+
+let data: Person[] = [
+    new Employee("fvega", "Fidel Vega", "Sales", "Paris"),
+    new Customer("ajones", "Alice Jones", "London", 500)
+];
+
+data.forEach(item => console.log(item.getDetails()));
+
+```
+
+#### Interface Hỗ trợ đa kế thừa class Customer implements Person, DogOwner
+
+#### Interface extends Interface
+
+####  Defining Optional Interface Properties and Method
+
+```ts
+interface Person {
+  name: string;
+  getDetails(): string;
+  dogName?: string;
+  getDogDetails?(): string;
+}
+```
+#### Shape Types play with interface
+
+```ts
+type Person = {
+    name: string;
+    getDetails(): string;
+};
+
+class Employee implements Person {
+    constructor(public readonly id: string, public name: string, private dept: string, public city: string) {
+        // no statements required
+    }
+
+    getDetails() {
+        return `${this.name} works in ${this.dept}`;
+    }
+}
+```
+
+#### Defining an Abstract Interface Implementation
+```ts
+interface Person {
+    name: string;
+    getDetails(): string;
+    dogName?: string;
+    getDogDetails?(): string;
+}
+
+abstract class AbstractDogOwner implements Person {
+    abstract name: string;
+    abstract dogName?: string;
+    abstract getDetails();
+    
+    getDogDetails() {
+        if (this.dogName) {
+            return `${this.name} has a dog called ${this.dogName}`;
+        }
+    }
+}
+
+```
+
+#### Dynamically Creating Properties
+
+```ts
+interface Product {
+    name: string;
+    price: number;
+}
+
+class SportsProduct implements Product {
+    constructor(public name: string, public category: string, public price: number) {
+        // no statements required
+    }
+}
+
+class ProductGroup {
+    constructor(...initialProducts: [string, Product][]) {
+        initialProducts.forEach(p => this[p[0]] = p[1]);
+    }
+    // index signature 
+    [propertyName: string]: Product;
+}
+
+let group = new ProductGroup(["shoes", new SportsProduct("Shoes", "Running", 90.50)]);
+group.hat = new SportsProduct("Hat", "Skiing", 20);
+
+Object.keys(group).forEach(k => console.log(`Property Name: ${k}`));
+
+```
+
+#### Enabling Index Value Checking
+
+Enabling Index Value Checking
+
+```ts
+tsconfig.json
+
+"strictNullChecks": true,
+"noUncheckedIndexedAccess": true
+```
+
+#### Using Generic Types
+
+![Async && Sync](./img/generic.PNG) 
+
+Các loại chung là trình giữ chỗ cho các loại được giải quyết khi một lớp hoặc chức năng được sử dụng cho phép viết mã an toàn loại có thể xử lý nhiều loại khác nhau, chẳng hạn như các lớp bộ sưu tập
+
+#### Creating Generic Classes
+
+A generic class is a class that has a generic type parameter. A generic typeparameter is a placeholder for a type that is specified when the class is used tocreate a new object.
+
+```ts
+import { Person, Product } from "./dataTypes";
+
+let people = [
+  new Person("Bob Smith", "London"),
+  new Person("Dora Peters", "New York")
+];
+
+let products = [
+  new Product("Running Shoes", 100),
+  new Product("Hat", 25)
+];
+
+//class DataCollection<T> {
+class DataCollection<T> {
+  private items: T[] = [];
+
+  constructor(initialItems: T[]) {
+    this.items.push(...initialItems);
+  }
+
+  add(newItem: T) {
+    this.items.push(newItem);
+  }
+
+  getItem(index: number): T {
+    return this.items[index];
+  }
+}
+
+let peopleData = new DataCollection<Person>(people);
+let productData = new DataCollection<Product>(products);
+
+let firstPerson = peopleData.getItem(0);
+let firstProduct = productData.getItem(0);
+console.log(`First Person: ${firstPerson.name}, ${firstPerson.city}`);
+console.log(`First Person: ${firstProduct.name}, ${firstProduct.price}`);
+
+```
+
+
+#### Constraining Generic Type Values.
+
+```ts
+class DataCollection<T extends (Person | Product)>
+```
+
+#### Defining Multiple Type Parameters
+
+```ts
+import { City, Person, Product, Employee } from "./dataTypes";
+
+let people = [new Person("Bob Smith", "London"), new Person("Dora Peters", "New York")];
+let products = [new Product("Running Shoes", 100), new Product("Hat", 25)];
+let cities = [new City("London", 8136000), new City("Paris", 2141000)];
+let employees = [new Employee("Bob Smith", "Sales"), new Employee("Alice Jones", "Sales")];
+
+class DataCollection<T extends { name: string }> {
+  protected items: T[] = [];
+
+  constructor(initialItems: T[]) {
+    this.items.push(...initialItems);
+  }
+
+  collate<U>(targetData: U[], itemProp: string, targetProp: string): (T & U)[] {
+    let results: (T & U)[] = [];
+    this.items.forEach(item => {
+      let match = targetData.find(d => d[targetProp] === item[itemProp]);
+      if (match !== undefined) {
+        results.push({ ...(match as object), ...(item as object) } as T & U);
+      }
+    });
+    return results;
+  }
+}
+
+class SearchableCollection<T extends { name: string }> extends DataCollection<T> {
+  constructor(initialItems: T[]) {
+    super(initialItems);
+  }
+
+  find(name: string): T | undefined {
+    return this.items.find(item => item.name === name);
+  }
+}
+
+let peopleData = new SearchableCollection<Person>(people);
+let foundPerson = peopleData.find("Bob Smith");
+if (foundPerson !== undefined) {
+  console.log(`Person ${foundPerson.name}, ${foundPerson.city}`);
+}
+
+```
+#### Type Guarding Generic Types
+
+```ts
+class DataCollection<T> {
+  protected items: T[] = [];
+
+  constructor(initialItems: T[]) {
+    this.items.push(...initialItems);
+  }
+
+  filter<V extends T>(predicate: (target: T) => target is V): V[] {
+    return this.items.filter(item => predicate(item)) as V[];
+  }
+}
+
+let mixedData = new DataCollection<Person | Product>([...people, ...products]);
+
+function isProduct(target: Person | Product): target is Product {
+  return target instanceof Product;
+}
+
+let filteredProducts = mixedData.filter<Product>(isProduct);
+filteredProducts.forEach(p => console.log(`Product: ${p.name}, ${p.price}`));
+```
+
+#### Defining a Static Method on a Generic Class
+
+```ts
+static reverse<ArrayType>(items: ArrayType[]):ArrayType[]
+```
+
+#### Defining Generic Interfaces
+
+```ts
+type shapeType = { name: string };
+
+interface Collection<T extends shapeType> {
+  add(...newItems: T[]): void;
+  get(name: string): T;
+  count: number;
+}
+```
+
+#### Extending Generic Interfaces
+
+```ts
+type shapeType = { name: string };
+
+interface Collection<T extends shapeType> {
+  add(...newItems: T[]): void;
+  get(name: string): T;
+  count: number;
+}
+
+interface SearchableCollection<T extends shapeType> extends Collection<T> {
+  find(name: string): T | undefined;
+}
+
+interface ProductCollection extends Collection<Product> {
+  sumPrices(): number;
+}
+
+interface PeopleCollection<T extends Product | Employee> extends Collection<T> {
+  getNames(): string[];
+}
+```
+
+#### Passing on the Generic Type Parameter
+
+```ts
+import { City, Person, Product, Employee } from "./dataTypes";
+
+type shapeType = { name: string };
+
+interface Collection<T extends shapeType> {
+  add(...newItems: T[]): void;
+  get(name: string): T;
+  count: number;
+}
+
+abstract class ArrayCollection<T extends shapeType> implements Collection<T> {
+  protected items: T[] = [];
+
+  add(...newItems: T[]): void {
+    this.items.push(...newItems);
+  }
+
+  abstract get(searchTerm: string): T;
+
+  get count(): number {
+    return this.items.length;
+  }
+}
+
+class ProductCollection extends ArrayCollection<Product> {
+  get(searchTerm: string): Product {
+    return this.items.find(item => item.name === searchTerm);
+  }
+}
+
+class PersonCollection extends ArrayCollection<Person> {
+  get(searchTerm: string): Person {
+    return this.items.find(item => item.name === searchTerm || item.city === searchTerm);
+  }
+}
+
+let peopleCollection: Collection<Person> = new PersonCollection();
+peopleCollection.add(
+  new Person("Bob Smith", "London"),
+  new Person("Dora Peters", "New York"), 
+  new Person("Dora Peters", "New York")
+);
+
+let productCollection: Collection<Product> = new ProductCollection();
+productCollection.add(
+  new Product("Running Shoes", 100),
+  new Product("Hat", 25)
+);
+
+[peopleCollection, productCollection].forEach(c => console.log(`Size: ${c.count}`));
+
+
+```
+
+#### Using Generic Iterators
+
+```ts
+values(): Iterator<T> {
+    return this.items.values();
+}
+
+let iterator: Iterator<Product> = productCollection.values();
+let result: IteratorResult<Product> = iterator.next();
+
+while (!result.done) {
+  console.log(`Product: ${result.value.name}, ${result.value.price}`);
+  result = iterator.next();
+}
+```
+#### Combining an Iterable and an Iterator
+
+```ts
+values(): IterableIterator<T> {
+  return this.items.values();
+}
+
+[...productCollection.values()].forEach(p => console.log(`Product: ${p.name}, ${ p.price}`));
+```
+
+#### Creating an Iterable Class
+```ts
+import { City, Person, Product, Employee } from "./dataTypes";
+
+let products = [new Product("Running Shoes", 100), new Product("Hat", 25)];
+
+type shapeType = { name: string };
+
+class Collection<T extends shapeType> implements Iterable<T> {
+  private items: Map<string, T>;
+
+  constructor(initialItems: T[] = []) {
+    this.items = new Map<string, T>();
+    this.add(...initialItems);
+  }
+
+  add(...newItems: T[]): void {
+    newItems.forEach(newItem => this.items.set(newItem.name, newItem));
+  }
+
+  get(name: string): T {
+    return this.items.get(name);
+  }
+
+  get count(): number {
+    return this.items.size;
+  }
+
+  [Symbol.iterator](): Iterator<T> {
+    return this.items.values();
+  }
+}
+
+let productCollection: Collection<Product> = new Collection(products);
+
+console.log(`There are ${productCollection.count} products`);
+
+[...productCollection].forEach(p => console.log(`Product: ${p.name}, ${p.price}`));
+```
+
+#### Using Index Types
+
+Using the Index Type Query
+
+The keyof keyword, known as the index type query operator, returns a union of
+the property names of a type
+
+```ts
+let myVar: keyof Product = "name";
+myVar = "price";
+myVar = "someOtherName";
+
+import { City, Person, Product, Employee } from "./dataTypes";
+
+function getValue<T, K extends keyof T>(item: T, keyname: K) {
+  console.log(`Value: ${item[keyname]}`);
+}
+
+let p = new Product("Running Shoes", 100);
+getValue(p, "name");
+getValue(p, "price");
+
+let e = new Employee("Bob Smith", "Sales");
+getValue(e, "name");
+getValue(e, "role");
+
+```
