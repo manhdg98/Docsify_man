@@ -1285,3 +1285,129 @@ Built-in mapped type (Omit): Kayak
 ```ts
 let p2: Record<"name"| "city", string> = { name:"Alice", city: "Paris"};
 ```
+
+```ts
+type targetKeys<T> = T extends (infer U)[] ? keyof U : keyof T;
+
+function getValue<T, P extends targetKeys<T>>(data: T, propName: P): T[P] {
+  if (Array.isArray(data)) {
+    return data[0][propName];
+  } else {
+    return data[propName];
+  }
+}
+
+let products = [new Product("Kayak", 275), new Product("Lifejacket", 48.95)];
+
+console.log(`Array Value: ${getValue(products, "price")}`);
+console.log(`Single Total: ${getValue(products[0], "price")}`);
+
+Mã trên định nghĩa hai kiểu generics TypeScript: `targetKeys<T>` và `getValue<T, P>`. Hãy giải thích từng phần của mã.
+
+Dòng đầu tiên định nghĩa kiểu `targetKeys<T>`. Nó sử dụng một phép so sánh kiểu để kiểm tra xem `T` có phải là một mảng (`T extends (infer U)[]`) hay không. Nếu là mảng, thì `keyof U` được trả về (kiểu của các phần tử trong mảng `T`). Nếu không phải mảng, thì `keyof T` được trả về (kiểu của `T`).
+
+Tiếp theo, định nghĩa hàm `getValue<T, P>`. Hàm này nhận hai đối số: `data` (kiểu `T`) và `propName` (kiểu `P`). Kiểu `P` được giới hạn bởi `targetKeys<T>`, vì vậy nó sẽ là một trong các khóa của đối tượng `data` hoặc của các phần tử trong mảng `data`.
+
+Trong thân hàm, điều kiện `if (Array.isArray(data))` kiểm tra xem `data` có phải là một mảng hay không. Nếu là mảng, hàm trả về giá trị của thuộc tính `propName` của phần tử đầu tiên trong mảng (`data[0][propName]`). Nếu không phải mảng, hàm trả về giá trị của thuộc tính `propName` của đối tượng `data` (`data[propName]`).
+
+Cuối cùng, đoạn mã cuối cùng sử dụng `getValue` để lấy giá trị của thuộc tính "price" từ mảng `products` và từ phần tử đầu tiên của mảng `products`. Kết quả được in ra bằng `console.log`.
+
+```
+
+#### Inferring Types of Functions
+```ts
+import { City, Person, Product, Employee } from "./dataTypes";
+
+function makeObject<T extends new (...args: any) => any>(
+  constructor: T,
+  ...args: ConstructorParameters<T>
+): InstanceType<T> {
+  return new constructor(...args as any[]);
+}
+
+let prod: Product = makeObject(Product, "Kayak", 275);
+let city: City = makeObject(City, "London", 8136000);
+
+[prod, city].forEach(item => console.log(`Name: ${item.name}`));
+```
+
+#### Working with JavaScript
+
+![Async && Sync](./img/js.PNG) 
+
+#### Understanding TypeScript in React Development
+
+![Async && Sync](./img/react.PNG) 
+
+React development relies on the JSX format which allows JavaScript and HTML to be mixed in a single file. The React development tools already have the ability to transform JSX files into pureJavaScript, which is done using the Babel package
+
+Babel is a JavaScriptcompiler that allows code written using recent versions of JavaScript to betranslated into code that works on older browsers, much like the versiontargeting feature provided by the TypeScript compiler. 
+
+Babel is extensiblethrough plugins, and support has grown to translate a wide range of otherformats into JavaScript, including JSX files
+
+```json
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx"
+  },
+  "include": [
+    "src"
+  ]
+}
+```
+
+Dưới đây là giải thích cho mỗi thuộc tính trong tệp tsconfig.json:
+
+1. `"target": "es5"`: Xác định phiên bản JavaScript mục tiêu cho mã được biên dịch. Trong trường hợp này, mã sẽ được biên dịch thành JavaScript ES5, có tương thích rộng rãi trên các trình duyệt và môi trường chạy JavaScript cũ hơn.
+
+2. `"lib": ["dom", "dom.iterable", "esnext"]`: Xác định các tệp khai báo tiêu chuẩn (lib) mà TypeScript sẽ sử dụng khi kiểm tra mã. Trong trường hợp này, các tệp khai báo dành cho DOM (Document Object Model) và các tính năng ESNext (phiên bản tiếp theo của ECMAScript) sẽ được sử dụng.
+
+3. `"allowJs": true`: Cho phép TypeScript biên dịch các tệp JavaScript (.js) trong dự án. Điều này hữu ích khi bạn muốn tích hợp mã JavaScript hiện có vào dự án TypeScript.
+
+4. `"skipLibCheck": true`: Bỏ qua việc kiểm tra các tệp khai báo (declaration files) trong quá trình kiểm tra mã. Thuộc tính này có thể cải thiện tốc độ xây dựng cho các dự án lớn.
+
+5. `"esModuleInterop": true`: Cho phép sử dụng cú pháp nhập/export của ES modules trong mã TypeScript, thay vì cú pháp require/module.exports của CommonJS.
+
+6. `"allowSyntheticDefaultImports": true`: Cho phép TypeScript tự động tạo ra các nhập mặc định giả trong trường hợp tệp khai báo không cung cấp nhập mặc định.
+
+7. `"strict": true`: Bật chế độ kiểm tra nghiêm ngặt trong TypeScript, bao gồm kiểm tra kiểu dữ liệu, kiểm tra sự tồn tại của các thuộc tính/trường, kiểm tra khả năng gán giá trị, v.v.
+
+8. `"forceConsistentCasingInFileNames": true`: Đảm bảo tính nhất quán trong việc đặt tên tệp trong dự án. Ví dụ: `MyFile.ts` và `myfile.ts` sẽ không được coi là hai tệp khác nhau.
+
+9. `"noFallthroughCasesInSwitch": true`: Đảm bảo không có trường hợp rơi vào (fallthrough) trong câu lệnh switch-case mà không có từ khóa `break` hoặc `return`.
+
+10. `"module": "esnext"`: Xác định loại module sẽ được sử dụng trong mã TypeScript. Trong trường hợp này, ES modules (ESM) sẽ được sử dụng.
+
+11. `"moduleResolution": "node"`: Xác định cách TypeScript sẽ tìm và phân giải các module được import trong mã. Giá trị `"node"` cho thuộc tính này cho biết TypeScript sẽ sử dụng quy tắc phân giải module tương tự như Node.js. Điều này bao gồm tìm kiếm các module trong thư mục `node_modules` và các tệp khai báo `*.d.ts` liên quan.
+
+12. `"resolveJsonModule": true`: Cho phép TypeScript phân giải và import các tệp JSON như module trong mã. Khi thuộc tính này được đặt thành `true`, bạn có thể import các tệp JSON như `import data from './data.json'`.
+
+13. `"isolatedModules": true`: Đảm bảo rằng TypeScript biên dịch mỗi tệp độc lập với các tệp khác. Thuộc tính này hữu ích trong việc kiểm tra và xây dựng từng tệp một, giúp tăng tốc độ xây dựng.
+
+14. `"noEmit": true`: Ngăn TypeScript xuất bất kỳ mã JavaScript nào sau quá trình biên dịch. Thuộc tính này hữu ích khi bạn chỉ muốn kiểm tra mã mà không cần xuất mã JavaScript.
+
+15. `"jsx": "react-jsx"`: Xác định loại cú pháp JSX sẽ được sử dụng trong mã TypeScript. Giá trị `"react-jsx"` cho biết TypeScript sẽ hỗ trợ cú pháp JSX cho việc phát triển ứng dụng React.
+
+Đây là một số thuộc tính quan trọng trong tệp tsconfig.json và giải thích ngắn gọn của chúng. Tuy nhiên, có nhiều thuộc tính khác bạn có thể cấu hình trong tsconfig.json để điều chỉnh quá trình biên dịch TypeScript theo nhu cầu của dự án cụ thể.
+
+![Async && Sync](./img/react-ts.PNG) 
+
+Babel can transform TypeScript into JavaScript, but it doesn’t understand theTypeScript features, and it doesn’t know how to perform type checking. Thattask is left to the TypeScript compiler so that responsibility for dealing withTypeScript is split: the TypeScript compiler is responsible for detecting typeerrors, and Babel is responsible for creating the JavaScript code the browser willexecute
