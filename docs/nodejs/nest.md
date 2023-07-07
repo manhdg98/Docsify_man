@@ -1,3 +1,11 @@
+### NestJS roadmap
+
+![Alt text](./img/nest_roadmap.PNG)
+
+### Nest JS Request & Response Lifecycle 
+
+![Alt text](./img/nest_req_res.PNG)
+
 Dưới đây là một bảng cheat sheet cho Nest.js, cung cấp một số thông tin quan trọng về các thành phần và tính năng chính của Nest.js:
 
 | Thành phần/Tính năng     | Mô tả                                                                                     |
