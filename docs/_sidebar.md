@@ -90,6 +90,8 @@
   - [Common error coding](./checklist/common_error_coding.md)
   - [Regex](./checklist/regex.md)
 
+- [Agile](./agile.md)
+  
 - Đời sống
   - Think outside the box
   - Đôi mắt mỉm cười
