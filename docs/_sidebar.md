@@ -75,6 +75,8 @@
   
   - CI && CD
 
+- Message Queue:
+  - [kafka](./queue/kafka.md)
 - Khái niệm cơ bản
 
   - [ABI](abi.md)
