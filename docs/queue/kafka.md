@@ -91,7 +91,7 @@ Example:
 6. **Server2 (S2)**: Server 2 cập nhật 20 đơn hàng trong cơ sở dữ liệu MongoDB2 (DB2).
 
 Lưu ý: 20 đơn hàng được cập nhật.
-![Alt text](./img/ex.png)
+![Alt text](./img/ex.png) 
 
 Khi cài đặt Kafka trên một máy EC2 với 4 core CPU và 8GB RAM, có một số yếu tố cần xem xét:
 
