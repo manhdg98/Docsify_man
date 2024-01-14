@@ -21,3 +21,8 @@ check cpu core
 nproc --all
 ```
 
+Check all service:
+```shell
+systemctl list-units --type=service
+```
+

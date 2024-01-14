@@ -32,3 +32,49 @@ Forexample, in the browser one will use the globally available `fetch()` API to 
 The simplest, and most common form of asynchronous execution within Node.js is the callback. Acallback is a way to specify that “after X happens, do Y”. Typically, “X” will be some form of slowI/O (e.g. reading a file), and “Y” will be work that incorporates the result (e.g. processing data fromthat file).
 <h1> Callbacks </h1>
 Callback functions like the one seen insetTimeout()are the most commonand straightforward, but we also have other techniques. These include promises, async/await, eventemitters, and streams
+
+# Event Loop
+Event Loop của Node.js và JavaScript trong trình duyệt có cơ bản là giống nhau vì cả hai đều dựa trên JavaScript Engine (V8 trong trường hợp của Google Chrome và Node.js). Tuy nhiên, có một số khác biệt quan trọng do môi trường và ứng dụng cụ thể của chúng:
+
+### 1. Môi Trường Xử Lý:
+- **Trình Duyệt JavaScript**:
+  - Event Loop trong trình duyệt chủ yếu quản lý các sự kiện UI, xử lý AJAX, và tương tác với Web APIs. 
+  - Nó cần phối hợp với rendering engine của trình duyệt để cập nhật giao diện người dùng.
+  
+- **Node.js**:
+  - Event Loop trong Node.js xử lý các tác vụ liên quan đến I/O không
+
+ đồng bộ, như làm việc với file system, database queries, và network operations.
+  - Không tương tác với giao diện người dùng hay Web APIs như trong trình duyệt.
+
+### 2. Các Phases của Event Loop:
+- **Trình Duyệt JavaScript**:
+  - Có một cấu trúc đơn giản hơn với một queue duy nhất cho các sự kiện và callbacks.
+  - Xử lý microtasks sau mỗi task, chủ yếu để xử lý promises.
+
+- **Node.js**:
+  - Event Loop trong Node.js được chia thành nhiều phases như timers, I/O callbacks, idle, prepare, poll, check, và close callbacks.
+  - Mỗi phase có một loại công việc cụ thể và queue riêng. Điều này cho phép Node.js xử lý một loạt các loại hoạt động I/O một cách hiệu quả.
+
+### 3. Tối Ưu Hóa cho Các Loại Tác Vụ:
+- **Trình Duyệt JavaScript**:
+  - Tối ưu cho tương tác người dùng và các tác vụ liên quan đến giao diện.
+  - Cần cân nhắc đến hiệu suất rendering và tránh block main thread.
+
+- **Node.js**:
+  - Tối ưu cho I/O không đồng bộ và xử lý nhiều kết nối đồng thời.
+  - Tập trung vào throughput và hiệu suất dịch vụ backend.
+
+### 4. APIs và Tính Năng:
+- **Trình Duyệt JavaScript**:
+  - Hỗ trợ các Web APIs như DOM, XMLHttpRequest, Fetch API, v.v.
+  - Chịu trách nhiệm cho việc xử lý sự kiện người dùng như click, scroll, và keyboard input.
+
+- **Node.js**:
+  - Cung cấp APIs cho các tác vụ server-side như HTTP requests, file system operations, và working with streams.
+  - Không hỗ trợ các Web APIs có trong trình duyệt.
+
+### Kết Luận
+Trong khi cơ bản là giống nhau về mặt cấu trúc và hoạt động, Event Loop trong Node.js và JavaScript trong trình duyệt khác nhau về môi trường hoạt động, loại tác vụ mà chúng xử lý, và các
+
+ APIs mà chúng hỗ trợ. Trình duyệt tập trung vào việc xử lý sự kiện liên quan đến UI và tương tác người dùng, trong khi Node.js tập trung vào xử lý I/O không đồng bộ và tối ưu hóa cho các ứng dụng server-side.
