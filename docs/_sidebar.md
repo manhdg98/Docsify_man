@@ -94,6 +94,8 @@
 
 - [Agile](./agile.md)
   
+- [AI](./ai.md)
+
 - Đời sống
   - Think outside the box
   - Đôi mắt mỉm cười
