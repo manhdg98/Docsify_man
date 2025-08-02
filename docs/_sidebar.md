@@ -93,8 +93,11 @@
   - [Regex](./checklist/regex.md)
 
 - [Agile](./agile.md)
-  
+
 - [AI](./ai.md)
+
+- BA
+  - [Các thông số Non-Functional cần biết](./ba/non_functional_requirements.md)
 
 - Đời sống
   - Think outside the box
